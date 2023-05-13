@@ -1,0 +1,27 @@
+# permissions for end users to view sequentialjobs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: sequentialjob-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: sequentialjob-operator
+    app.kubernetes.io/part-of: sequentialjob-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: sequentialjob-viewer-role
+rules:
+- apiGroups:
+  - operator.rbagd.eu
+  resources:
+  - sequentialjobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - operator.rbagd.eu
+  resources:
+  - sequentialjobs/status
+  verbs:
+  - get
